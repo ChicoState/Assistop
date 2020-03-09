@@ -1,15 +1,9 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 from . import models
-
-# Create your views here.
-
-def home(request):
-    return render(request, "home.html")
-=======
 from django.http import HttpResponse
 
 # Create your views here.
+
 
 def index(request):
 	context={
@@ -58,4 +52,3 @@ def about(request):
         "title": "Assistop: About",
     }
     return render(request, "about.html", context=context)
->>>>>>> f4861a38680530e5f1ecfa6d36997094a25cb4f4
