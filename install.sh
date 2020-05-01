@@ -69,7 +69,7 @@ sudo usermod -aG docker pi
 yes | sudo pip3 install docker-compose
 
 #Get mac_vendor_lookup package
-yes | sudo pip3 install mac_vendor_lookup
+yes | sudo pip3 install mac-vendor-lookup
 
 # Add a cron job to run check_devices.py
 (crontab -l -u pi; echo "* * * * * /home/pi/Assistop/device_discovery/check_devices.py") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -u pi -
