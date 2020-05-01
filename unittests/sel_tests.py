@@ -2,6 +2,17 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
+base_url = "http://assistop.local"
+ext = [ "/",
+        "/assistants",
+        "/devices",
+        "/schedule",
+        "/notifications",
+        "/hotspot",
+        "/system",
+        "/about"]
+
+
 def test_side_bar_buttons(driver, url):
     burls = [
             ("/", "Dashboard"),
@@ -22,50 +33,69 @@ def test_side_bar_buttons(driver, url):
 #Set up web driver
 with webdriver.Firefox() as driver:
     #Dashboard tests
-    driver.get("http://assistop.local")
+    driver.get(base_url)
     assert "Assistop" in driver.title
     assert "Dashboard" in driver.title
-    test_side_bar_buttons(driver, "http://assistop.local")
-    
+
     #My Assistant Tests
-    driver.get("http://assistop.local/assistants")
+    extension = "/assistants"
+    turl = base_url + extension
+    driver.get(turl)
     assert "Assistop" in driver.title
     assert "Assistants" in driver.title
-    
+
     #My Devices Tests
-    driver.get("http://assistop.local/devices")
+    extension = "/devices"
+    turl = base_url + extension
+    driver.get(turl)
     assert "Assistop" in driver.title
     assert "Devices" in driver.title
+
+    #Change Name Test
+    time.sleep(1)
     button = driver.find_element_by_class_name("open-button")
     button.click()
     elem = driver.find_element_by_id("dev_name")
     elem.send_keys("Selenium Test")
     elem.send_keys(Keys.RETURN);
     assert "Selenium Test" in driver.page_source
-    
+
     #Schedule Tests
-    driver.get("http://assistop.local/schedule")
+    extension = "/schedule"
+    turl = base_url + extension
+    driver.get(turl)
     assert "Assistop" in driver.title
     assert "Schedule" in driver.title
-    
+
     #Notifications Tests
-    driver.get("http://assistop.local/notifications")
+    extension = "/notifications"
+    turl = base_url + extension
+    driver.get(turl)
     assert "Assistop" in driver.title
     assert "Notifications" in driver.title
-    
+
     #Hotspot Tests
-    driver.get("http://assistop.local/hotspot")
+    extension = "/hotspot"
+    turl = base_url + extension
+    driver.get(turl)
     assert "Assistop" in driver.title
     assert "Hotspot" in driver.title
-    
+
     #System Tests
-    driver.get("http://assistop.local/system")
+    extension = "/system"
+    turl = base_url + extension
+    driver.get(turl)
     assert "Assistop" in driver.title
     assert "System" in driver.title
-    
+
     #About Tests
-    driver.get("http://assistop.local/about")
+    extension = "/about"
+    turl = base_url + extension
+    driver.get(turl)
     assert "Assistop" in driver.title
     assert "About" in driver.title
+
+    #Test all pages side bar buttons
+    [test_side_bar_buttons(driver, base_url + i) for i in ext]
 
 print("All tests passed")
