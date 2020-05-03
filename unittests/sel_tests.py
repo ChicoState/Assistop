@@ -1,8 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import time
 
-base_url = "http://assistop.local"
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+
+
+base_url = "127.0.0.1:8080"
 ext = [ "/",
         "/assistants",
         "/devices",
@@ -31,7 +37,7 @@ def test_side_bar_buttons(driver, url):
         assert b[1] in driver.title #Make sure it takes us to the right page
 
 #Set up web driver
-with webdriver.Firefox() as driver:
+with webdriver.Chrome(options=chrome_options) as driver:
     #Dashboard tests
     driver.get(base_url)
     assert "Assistop" in driver.title
