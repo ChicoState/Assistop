@@ -15,6 +15,6 @@ install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
 script:
         - pip install -r requirements.txt
         - pip install selenium
-        - python manage.py runserver 0.0.0.0:8080 &
+        - python assistop/manage.py runserver 0.0.0.0:8080 &
         - sleep 3
         - python unittests/sel_tests.py
