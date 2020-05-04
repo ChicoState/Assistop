@@ -5,10 +5,10 @@ import time
 
 firefox_options = webdriver.FirefoxOptions()
 firefox_options.set_headless()
-firefox_options.add_argument("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
-firefox_options.add_argument("--window-size=1920,1080")
-firefox_options.add_argument("--disable-gpu")
-firefox_options.add_argument("--ignore-certificate-errors")
+#firefox_options.add_argument("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
+#firefox_options.add_argument("--window-size=1920,1080")
+#firefox_options.add_argument("--disable-gpu")
+#firefox_options.add_argument("--ignore-certificate-errors")
 
 
 base_url = "http://localhost:8080"
