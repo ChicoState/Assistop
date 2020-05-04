@@ -68,6 +68,7 @@ with webdriver.Firefox(options=firefox_options) as driver:
     elem = driver.find_element_by_id("dev_name")
     elem.send_keys("Selenium Test")
     elem.send_keys(Keys.RETURN);
+    driver.get(turl)
     assert "Selenium Test" in driver.page_source
 
     #Schedule Tests
