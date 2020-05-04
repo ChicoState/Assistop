@@ -3,18 +3,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 import time
 
-
-chrome_options = Options()
-chrome_options.add_argument("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
-#chrome_options.add_argument("--headless")
-chrome_options.add_argument("--window-size=1920,1080")
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--ignore-certificate-errors")
-chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+firefox_options = webdriver.FirefoxOptions()
+firefox_options.set_headless()
+firefox_options.add_argument("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
+firefox_options.add_argument("--window-size=1920,1080")
+firefox_options.add_argument("--disable-gpu")
+firefox_options.add_argument("--ignore-certificate-errors")
 
 
-base_url = "localhost:8080"
+base_url = "http://localhost:8080"
 ext = [ "/",
         "/assistants",
         "/devices",
@@ -43,10 +40,10 @@ def test_side_bar_buttons(driver, url):
         assert b[1] in driver.title #Make sure it takes us to the right page
 
 #Set up web driver
-with webdriver.Chrome(options=chrome_options) as driver:
+with webdriver.Firefox(options=firefox_options) as driver:
     #Dashboard tests
     driver.get(base_url)
-    driver.get_screenshot_as_file("capture.png")
+    time.sleep(10)
     assert "Assistop" in driver.title
     assert "Dashboard" in driver.title
 

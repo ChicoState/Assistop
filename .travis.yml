@@ -3,17 +3,17 @@ dist: xenial
 language: python
 python:
         - 3.6.9
-addons: # get google-chrome-stable
-        chrome: stable
-install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
+addons:
+        firefox: "49.0"
+install:
         - sudo apt-get install -y libglib2.0-0 libnss3 libgconf-2-4 libfontconfig1
         - sudo apt-get update
-        - wget -N https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_linux64.zip -P ~/
-        - unzip ~/chromedriver_linux64.zip -d ~/
-        - rm ~/chromedriver_linux64.zip
-        - sudo mv -f ~/chromedriver /usr/local/share/
-        - sudo chmod +x /usr/local/share/chromedriver
-        - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+        - wget -N https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz -P ~/
+        - tar xfz ~/geckodriver-v0.24.0-linux64.tar.gz
+        - rm ~/geckodriver-v0.24.0-linux64.tar.gz
+        - sudo mv -f ~/geckodriver /usr/local/share/
+        - sudo chmod +x /usr/local/share/geckodriver
+        - sudo ln -s /usr/local/share/geckodriver /usr/local/bin/geckodriver
 script:
         - pip install -r requirements.txt
         - pip install selenium
