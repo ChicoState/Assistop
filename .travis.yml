@@ -17,7 +17,7 @@ install:
 script:
         - pip install -r requirements.txt
         - pip install selenium
+        - cp assistop/myapp/documentation/templates/devices.json assistop/myapp/documentation/JSON/devices.json
         - python assistop/manage.py runserver 0.0.0.0:8080 &
         - sleep 3
-          #- python unittests/sel_tests.py
-        - ls assistop
+        - python unittests/sel_tests.py
