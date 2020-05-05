@@ -1,4 +1,5 @@
 # Assistop
+[![Build Status](https://travis-ci.org/ChicoState/Assistop.svg?branch=master)](https://travis-ci.org/ChicoState/Assistop)
 
 Created By:
  - Dallas Griffith
