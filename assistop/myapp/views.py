@@ -11,10 +11,30 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Create your views here.
 
 def index(request):
-	context={
-		"title": "Assistop: Dashboard",
-	}
-	return render(request, "index.html", context = context)
+    with open(os.path.join(BASE_DIR, 'myapp/documentation/JSON/devices.json')) as f:
+        d = json.load(f)
+        controlledDic = d['controlledDevices']
+        controlledOnline = 0
+        for device in controlledDic:
+            if device["online"] == 1:
+                controlledOnline = controlledOnline + 1
+
+        controllerDic = d['controllerDevices']
+        controllerOnline = 0
+        for device in controllerDic:
+            if device["online"] == 1:
+                controllerOnline = controllerOnline + 1
+
+        context={
+            "title": "Assistop: Dashboard",
+            "controlledTotal": len(controlledDic),
+            "controlledOnline": controlledOnline,
+            "controlledOffline": len(controlledDic) - controlledOnline,
+            "controllerTotal": len(controllerDic),
+            "controllerOnline": controllerOnline,
+            "controllerOffline": len(controllerDic) - controllerOnline,
+        }
+    return render(request, "index.html", context = context)
 
 def assistants(request):
     with open(os.path.join(BASE_DIR, 'myapp/documentation/JSON/devices.json')) as f:
