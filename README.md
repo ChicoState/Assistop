@@ -1,5 +1,5 @@
 # Assistop
-[![Coverage Status](https://coveralls.io/repos/github/ChicoState/Assistop/badge.svg?branch=master)](https://coveralls.io/github/ChicoState/Assistop?branch=master)
+
 Created By:
  - Dallas Griffith
  - Paul Henson
