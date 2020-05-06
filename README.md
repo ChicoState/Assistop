@@ -11,4 +11,4 @@ Assistop is an IoT Governor. It is designed to enhance the security of home assi
 ## Getting Started
 Download the git repo and run the installation script as sudo `sudo ./install.sh` where it will run through a set of instructions and only prompt you to reboot.
 
-This will create a new wifi network called Assistop with the default passowrd of ChangeMe
+This will create a new wifi network called Assistop with the default password of ChangeMe
