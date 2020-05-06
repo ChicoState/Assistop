@@ -25,6 +25,7 @@ script:
         - sleep 3
         - python unittests/sel_tests.py
         - coverage run --include=unittests/sel_tests.py unittests/sel_tests.py
+        - coverage run --include=assistop/* assistop/*
 
 after_success:
         - pip install pyyaml coveralls
