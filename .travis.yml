@@ -26,4 +26,5 @@ script:
         - python unittests/sel_tests.py
 
 after_success:
+        - pip install pyyaml coveralls
         - coveralls
