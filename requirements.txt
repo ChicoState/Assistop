@@ -3,4 +3,4 @@ Django==3.0.3
 pytz==2019.3
 sqlparse==0.3.0
 mac-vendor-lookup==0.1.11
-coverage==*
+coverage==5.1
