@@ -26,7 +26,7 @@ install:
         - sudo chmod +x /usr/local/share/geckodriver
         - sudo ln -s /usr/local/share/geckodriver /usr/local/bin/geckodriver
 script:
-        - docker-compose run web /bin/bash
+        - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" .
         - pip install -r requirements.txt
         - pip install selenium
         - cp assistop/myapp/documentation/templates/devices.json assistop/myapp/documentation/JSON/devices.json
