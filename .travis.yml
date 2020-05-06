@@ -6,6 +6,9 @@ python:
 addons:
         firefox: "75.0"
 
+env:
+        -DJANGO=3.0.3 DB=sqlite3
+
 before_install:
         - pip install python-coveralls
 install:
