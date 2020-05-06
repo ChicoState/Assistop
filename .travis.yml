@@ -28,4 +28,4 @@ script:
 
 after_success:
         - pip install pyyaml coveralls
-        - coveralls --exclude-pattern=/home/travis/virtualenv/python3.6.9/lib/*
+        - coveralls
