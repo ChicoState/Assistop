@@ -7,7 +7,6 @@ addons:
         firefox: "75.0"
 
 env:
-        - DJANGO=3.0.3 DB=sqlite3
         - DOCKER_COMPOSE_VERSION=1.4.2        
 services:
         - docker
