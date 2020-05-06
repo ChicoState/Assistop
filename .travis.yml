@@ -30,6 +30,7 @@ script:
         - cp assistop/myapp/documentation/templates/devices.json assistop/myapp/documentation/JSON/devices.json
         #- python assistop/manage.py runserver 0.0.0.0:8080 &
         - coverage run assistop/manage.py runserver 0.0.0.0:8080 &
+        - docker-compose build
         - docker-compose run web sh -c "coverage run manage.py test && coverage report"
         - sleep 3
         #- python unittests/sel_tests.py
