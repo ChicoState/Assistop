@@ -24,8 +24,7 @@ script:
         - python assistop/manage.py runserver 0.0.0.0:8080 &
         - sleep 3
         - python unittests/sel_tests.py
-        - coverage run --include=unittests/sel_tests.py unittests/sel_tests.py
-        - coverage run --include=assistop/* assistop/*
+        - coverage run --include=unittests/sel_tests.py, assistop/* unittests/sel_tests.py
 
 after_success:
         - pip install pyyaml coveralls
