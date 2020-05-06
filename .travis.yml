@@ -16,6 +16,7 @@ before_install:
         - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
         - chmod +x docker-compose
         - sudo mv docker-compose /usr/local/bin
+        - docker build -t .
 install:
         - sudo apt-get install -y libglib2.0-0 libnss3 libgconf-2-4 libfontconfig1
         - sudo apt-get update
@@ -26,7 +27,6 @@ install:
         - sudo chmod +x /usr/local/share/geckodriver
         - sudo ln -s /usr/local/share/geckodriver /usr/local/bin/geckodriver
 script:
-        - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" .
         - pip install -r requirements.txt
         - pip install selenium
         - cp assistop/myapp/documentation/templates/devices.json assistop/myapp/documentation/JSON/devices.json
