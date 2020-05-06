@@ -9,9 +9,6 @@ addons:
 env:
         -DJANGO=3.0.3 DB=sqlite3
 
-services: 
-        - docker
-
 before_install:
         - pip install python-coveralls
         - pip install docker-compose
@@ -30,13 +27,10 @@ script:
         - cp assistop/myapp/documentation/templates/devices.json assistop/myapp/documentation/JSON/devices.json
         #- python assistop/manage.py runserver 0.0.0.0:8080 &
         - coverage run assistop/manage.py runserver 0.0.0.0:8080 &
-        - docker-compose build
-        - docker-compose run web sh -c "coverage run manage.py test && coverage report"
         - sleep 3
         #- python unittests/sel_tests.py
         - coverage run --include=unittest/sel_tests.py unittests/sel_tests.py
 
 after_success:
-        - docker-compose run web sh -c "coverage run manage.py test && TRAVIS_JOB_ID=$TRAVIS_JOB_ID TRAVIS_BRANCH=$TRAVIS_BRANCH COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN coveralls"
         - pip install pyyaml coveralls
         - coveralls
