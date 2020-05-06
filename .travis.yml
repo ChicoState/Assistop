@@ -5,7 +5,8 @@ python:
         - 3.6.9
 addons:
         firefox: "75.0"
-
+env:
+        - DJANGO_VERSION=3.0.3 
 before_install:
         - pip install python-coveralls
 install:
@@ -24,7 +25,7 @@ script:
         #- python assistop/manage.py runserver 0.0.0.0:8080 &
         - coverage run assistop/manage.py runserver 0.0.0.0:8080 &
         - coverage run assistop/myapp/tests.py
-        - coverage run assistop/manage.py test
+        - coverage run assistop/manage.py test myapp/tests.py
         - sleep 3
         #- python unittests/sel_tests.py
         - coverage run --include=unittests/sel_tests.py unittests/sel_tests.py
