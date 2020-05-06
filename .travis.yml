@@ -26,5 +26,6 @@ script:
         - python unittests/sel_tests.py
 
 after_success:
+        - docker cp ingredient-phrase-tagger-container:/app/.coverage ./
         - coverage combine
         - coveralls --coveralls_yaml .coveralls.yml
